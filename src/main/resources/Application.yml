@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/eduflex
+    username: postgres
+    password: PASSWORD
+    driver-class-name: org.postgresql.Driver
+  main:
+    allow-circular-references: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+      max-request-size: 2MB
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+      security:
+        user:
+          name: admin
+          password: admin
+          roles:
+            - ADMIN
+            - SUPER_ADMIN
+
+      server:
+        port: 8080
+
+      # Configuration CORS
+      cors:
+        allowed-origin-patterns: "*"
+
+      # Configuration pour le SetupLoaderData
+      setup:
+        admin-email: eduflex@gmail.com
+        admin-password: eduflex@12!
