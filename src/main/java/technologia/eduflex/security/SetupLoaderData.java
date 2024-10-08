@@ -47,9 +47,10 @@ public class SetupLoaderData implements ApplicationListener<ContextRefreshedEven
         Users users = usersRepository.findByEmailAndStatut("eduflex@gmail.com", Statut.ACTIVATER);
         if (users == null) {
             users = new Users();
-            users.setFirstName("BKO DESIGN");
-            users.setLastName("SCHOOL");
+            users.setFirstName("Eduflex");
+            users.setLastName("School");
             users.setEmail("eduflex@gmail.com");
+            users.setPhoneNumber("22390000000");
             users.setPassword(passwordEncoder.encode(
                     "eduflex@12!"));
         }

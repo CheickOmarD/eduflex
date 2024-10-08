@@ -2,6 +2,7 @@ package technologia.eduflex.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import technologia.eduflex.enums.Statut;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,5 +24,9 @@ public class Etudiant {
     private String email;
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime endDate = LocalDateTime.now();
+    @Enumerated(EnumType.STRING)
+    private Statut statut;
+    @ManyToOne
+    private Role role;
 }
 

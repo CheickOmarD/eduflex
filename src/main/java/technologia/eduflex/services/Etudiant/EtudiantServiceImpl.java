@@ -3,11 +3,15 @@ package technologia.eduflex.services.Etudiant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import technologia.eduflex.dto.EtudiantResponse;
+import technologia.eduflex.enums.Statut;
 import technologia.eduflex.exceptions.AlreadyExistException;
 import technologia.eduflex.exceptions.NotFoundException;
 import technologia.eduflex.models.Etudiant;
+import technologia.eduflex.models.Role;
 import technologia.eduflex.repositories.EtudiantRepository;
+import technologia.eduflex.repositories.RoleRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,12 +20,20 @@ public class EtudiantServiceImpl {
 
     @Autowired
     private EtudiantRepository etudiantRepository;
+    private RoleRepository roleRepository;
 
     public EtudiantResponse creerEtudiant(Etudiant etudiant) {
-        if (etudiant != null && etudiantRepository.existsByEmail(etudiant.getEmail())) {
-            throw new AlreadyExistException("Cet email est déjà utilisé.");
+        Etudiant email = etudiantRepository.findByEmailAndStatut(etudiant.getEmail(), Statut.ACTIVATER);
+        if (email != null) {
+            throw new AlreadyExistException("Ce email existe deja ! ");
         }
-        return mapToResponse(etudiantRepository.save(etudiant));
+        Role role = roleRepository.findByNameAndStatut("ETUDIANT", Statut.ACTIVATER);
+        Etudiant etudiantSave = etudiantRepository.save(etudiant);
+        if (etudiant.getRole()== null){
+            etudiantSave.setRole(role);
+        }
+
+        return mapToResponse(etudiantSave);
     }
 
     public EtudiantResponse modifierEtudiant(Long id, Etudiant etudiantDetails) {
