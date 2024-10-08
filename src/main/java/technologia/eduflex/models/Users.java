@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import technologia.eduflex.enums.Statut;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Users {
     private  String lastName;
     private  String email;
     private  String password;
-
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToMany (fetch = FetchType.EAGER)
     @ToString.Exclude

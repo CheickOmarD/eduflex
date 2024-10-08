@@ -22,4 +22,8 @@ public interface UsersService {
     UsersResponse activate(Users users);
 
     UsersResponse mapToResponse(Users users);
+
+    List<UsersResponse> mapToResponse(List<Users> users);
+
+    List<Users> getAllUsers(String role);
 }

@@ -1,10 +1,13 @@
 package technologia.eduflex.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EtudiantResponse {
     private Long id;
     private String nom;

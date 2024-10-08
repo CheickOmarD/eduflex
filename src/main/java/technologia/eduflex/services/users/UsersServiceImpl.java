@@ -125,4 +125,12 @@ public class UsersServiceImpl implements UsersService {
         return usersResponse;
     }
 
+    public List<Users> getAllUsers(String role) {
+        if (role != null && !role.isEmpty()) {
+            return usersRepository.findByRole(role);
+        }
+        return usersRepository.findAll();
+    }
+
+
 }

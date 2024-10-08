@@ -29,7 +29,10 @@ spring:
           password: admin
           roles:
             - ADMIN
-            - SUPER_ADMIN
+            - COMPTABLE
+            - ENSEIGNANT
+            - ETUDIANT
+            - USERS
 
       server:
         port: 8080
