@@ -26,6 +26,9 @@ public class PersonnelServiceImpl {
             if (personnelRepository.existsByEmail(personnel.getEmail())) {
                 throw new AlreadyExistException("Cet email est déjà utilisé.");
             }
+            if (personnelRepository.existsByPhoneNumber(personnel.getPhoneNumber())) {
+                throw new AlreadyExistException("Ce numéro de téléphone est déjà utilisé.");
+            }
             return mapToResponse(personnelRepository.save(personnel));
         }
         throw new IllegalArgumentException("Le personnel ne peut pas être nul.");
@@ -61,20 +64,25 @@ public class PersonnelServiceImpl {
             if (personnelDetails.getPrenom() != null) {
                 personnel.setPrenom(personnelDetails.getPrenom());
             }
-             if (personnelDetails.getEmail() != null) {
-                 personnel.setEmail(personnelDetails.getEmail());
-             }
-       }
+            if (personnelDetails.getEmail() != null) {
+                personnel.setEmail(personnelDetails.getEmail());
+            }
+            if (personnelDetails.getPhoneNumber() != null) {
+                if (personnelRepository.existsByPhoneNumber(personnelDetails.getPhoneNumber())) {
+                    throw new AlreadyExistException("Ce numéro de téléphone est déjà utilisé.");
+                }
+                personnel.setPhoneNumber(personnelDetails.getPhoneNumber());
+            }
+        }
     }
 
     private PersonnelResponse mapToResponse(Personnel personnel) {
         if (personnel == null) {
-            throw new NotFoundException("Personnel not found"); // Lancer une exception si personnel est null
+            throw new NotFoundException("Personnel non trouvé");
         }
 
-
         if (personnel.getRole() == null || personnel.getRole().isEmpty()) {
-            throw new NotFoundException("Ce pour n existe pas pour le personnel");
+            throw new NotFoundException("Ce rôle n'existe pas pour le personnel");
         }
 
         return PersonnelResponse.builder()
@@ -82,9 +90,9 @@ public class PersonnelServiceImpl {
                 .nom(personnel.getNom())
                 .prenom(personnel.getPrenom())
                 .email(personnel.getEmail())
+                .phoneNumber(personnel.getPhoneNumber())
                 .password(personnel.getPassword())
                 .build();
     }
-
 }
 

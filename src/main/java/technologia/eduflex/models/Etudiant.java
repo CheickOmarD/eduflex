@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @ToString
@@ -20,9 +21,7 @@ public class Etudiant {
     private String tuteur;
     @Column(unique = true)
     private String email;
-//
-////    public String getEmail() {
-////        return "";
-//    }
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime endDate = LocalDateTime.now();
 }
 

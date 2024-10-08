@@ -9,7 +9,9 @@ public class PersonnelResponse {
     private Long id;
     private String nom;
     private String prenom;
+    private String phoneNumber;
     private String email;
     private String password;
+
 }
 

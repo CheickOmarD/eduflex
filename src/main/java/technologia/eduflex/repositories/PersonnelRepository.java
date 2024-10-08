@@ -6,4 +6,5 @@ import technologia.eduflex.models.Personnel;
 public interface PersonnelRepository extends JpaRepository<Personnel, Long> {
     boolean existsByEmail(String email);
 
+    boolean existsByPhoneNumber(String phoneNumber);
 }

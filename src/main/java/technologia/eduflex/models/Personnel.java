@@ -18,11 +18,12 @@ public class Personnel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
+    private String prenom;
+    private String phoneNumber;
     private String email;
     private String password;
-    private String prenom;
     private LocalDateTime createdAt = LocalDateTime.now();
-
+    private LocalDateTime endDate = LocalDateTime.now();
     private String role;
 
 }
