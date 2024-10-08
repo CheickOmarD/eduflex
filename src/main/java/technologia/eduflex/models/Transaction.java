@@ -14,15 +14,14 @@ import java.time.LocalDateTime;
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 public class Transaction {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Double montant;
 
     @Enumerated(EnumType.STRING)
     private StatutTransaction statut;
-
     private LocalDateTime dateTransaction= LocalDateTime.now();
     @ManyToOne
     private Users users;

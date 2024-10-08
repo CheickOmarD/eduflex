@@ -15,6 +15,7 @@ import technologia.eduflex.repositories.UsersRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @Transactional
@@ -53,7 +54,7 @@ public class SetupLoaderData implements ApplicationListener<ContextRefreshedEven
             users.setPassword(passwordEncoder.encode(
                     "eduflex@12!"));
         }
-        users.setRoles(role);
+        users.setRoles((Set<Role>) role);
         usersRepository.save(users);
     }
 

@@ -1,5 +1,5 @@
 package technologia.eduflex.security.jwt;
-
+import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
@@ -14,7 +14,7 @@ import technologia.eduflex.security.services.UserDetailsImpl;
 import java.util.Date;
 import java.util.function.Function;
 
-import static org.springframework.security.config.Elements.JWT;
+
 import static technologia.eduflex.security.SecurityConstants.*;
 
 @Service
@@ -51,7 +51,6 @@ public class JwtService {
 
     private boolean isTokenExpired(String token) {
         try {
-            // Decoder le token
             final DecodedJWT decodedJWT = JWT.decode(token);
             final Date expirationDate = decodedJWT.getExpiresAt();
 

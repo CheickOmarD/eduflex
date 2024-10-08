@@ -36,7 +36,7 @@ public class TransactionServiceImpl implements TransactionService {
             throw new IllegalArgumentException("L'ID de l'utilisateur ne peut pas être nul.");
         }
         // Récupérer les transactions de l'utilisateur
-        return transactionRepository.findByUtilisateurId(utilisateurId);
+        return transactionRepository.findByUsersId(utilisateurId);
     }
 
     @Override

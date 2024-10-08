@@ -18,9 +18,11 @@ public class Etudiant {
     private LocalDate dateNaissance;
     private String classe;
     private String tuteur;
-
-    public String getEmail() {
-        return "";
-    }
+    @Column(unique = true)
+    private String email;
+//
+////    public String getEmail() {
+////        return "";
+//    }
 }
 
