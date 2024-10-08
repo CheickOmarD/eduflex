@@ -6,6 +6,8 @@ import technologia.eduflex.enums.Statut;
 
 import java.time.LocalDateTime;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,11 +25,11 @@ public class Users {
     private  String password;
     private LocalDateTime createdAt = LocalDateTime.now();
 
-//    @ManyToMany (fetch = FetchType.EAGER)
-////    @ToString.Exclude
-////    private List<Role> roles = new ArrayList<>();
-    @ManyToMany
-    private Set<Role> roles;
+   @ManyToMany (fetch = FetchType.EAGER)
+    @ToString.Exclude
+    private List<Role> roles = new ArrayList<>();
+//    @ManyToMany
+//    private Set<Role> roles;
     @Enumerated(value = EnumType.STRING)
     private Statut statut = Statut.ACTIVATER;
 }
