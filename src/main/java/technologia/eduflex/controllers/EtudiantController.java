@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import technologia.eduflex.dto.EtudiantResponse;
 import technologia.eduflex.models.Classe;
 import technologia.eduflex.models.Etudiant;
-import technologia.eduflex.services.Etudiant.EtudiantServiceImpl;
+import technologia.eduflex.services.Etudiant.EtudiantService;
 
 import java.util.Optional;
 
@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EtudiantController {
 
-    private final EtudiantServiceImpl etudiantService;
+    private final EtudiantService etudiantService;
 
     @PostMapping
     public ResponseEntity<EtudiantResponse> createEtudiant(@RequestBody Etudiant etudiant) {
