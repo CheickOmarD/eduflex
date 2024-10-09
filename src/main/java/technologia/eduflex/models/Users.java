@@ -25,7 +25,6 @@ public class Users {
     private String email;
     private String password;
     private String phoneNumber;
-
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime endDate = LocalDateTime.now();
 

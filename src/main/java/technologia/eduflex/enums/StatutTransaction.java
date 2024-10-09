@@ -5,5 +5,4 @@ public enum StatutTransaction {
     VALIDE,
     ECHEC,
     ANNULE,
-    REMBOURSE
 }

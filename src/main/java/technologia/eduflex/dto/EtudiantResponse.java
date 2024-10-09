@@ -1,6 +1,9 @@
 package technologia.eduflex.dto;
 
 import lombok.*;
+import technologia.eduflex.models.Classe;
+
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -10,9 +13,9 @@ import lombok.*;
 @NoArgsConstructor
 public class EtudiantResponse {
     private Long id;
-    private String nom;
-    private String prenom;
-    private String dateNaissance;
-    private String classe;
+    private String firstName;
+    private String lastName;
+    private LocalDate Birthday;
+    private Classe classe;
     private String tuteur;
 }

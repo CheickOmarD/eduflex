@@ -6,6 +6,7 @@ import technologia.eduflex.enums.Statut;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @ToString
@@ -15,10 +16,11 @@ public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
-    private String prenom;
-    private LocalDate dateNaissance;
-    private String classe;
+    private String firstName;
+    private String lastName;
+    private LocalDate Birthday;
+    private Classe classe;
+    private String note;
     private String tuteur;
     @Column(unique = true)
     private String email;
@@ -28,5 +30,7 @@ public class Etudiant {
     private Statut statut;
     @ManyToOne
     private Role role;
+    @OneToMany
+    private List<Note> notes;
 }
 

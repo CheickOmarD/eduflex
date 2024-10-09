@@ -1,10 +1,7 @@
 package technologia.eduflex.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import technologia.eduflex.enums.ModeTransaction;
 import technologia.eduflex.enums.StatutTransaction;
 
@@ -12,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -28,8 +26,7 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private ModeTransaction mode;
 
-    private LocalDateTime CreatedAt = LocalDateTime.now();
-    private LocalDateTime endDate = LocalDateTime.now();
+    private LocalDateTime paiement = LocalDateTime.now();
     @ManyToOne
     private Users users;
 
