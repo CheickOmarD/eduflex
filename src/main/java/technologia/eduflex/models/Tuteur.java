@@ -24,4 +24,15 @@ public class Tuteur {
     @OneToMany
     private List<Etudiant> etudiants;
 
+    public String  getFirstname() {
+        return "";
+    }
+
+    public String  getLastname() {
+        return "";
+    }
+
+    public String  getEmail() {
+        return "";
+    }
 }

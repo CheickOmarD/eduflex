@@ -1,11 +1,11 @@
 package technologia.eduflex.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import technologia.eduflex.models.Classe;
+import org.springframework.stereotype.Repository;
 import technologia.eduflex.models.Tuteur;
-
+@Repository
 public interface TuteurRepository extends JpaRepository<Tuteur,Long> {
-    Tuteur findByIdAndName(Long id, String firstname);
-    Tuteur findByFirstNameAndLastName(Long id,String lastname);
-    Tuteur findByIdAndFistname(String firstname);
+    Tuteur findByIdAndFirstname(Long id, String firstname);
+    Tuteur findByFirstNameAndLastName(String firstname,String lastname);
+    Tuteur findByIdAndFistname(Long id,String firstname);
 }

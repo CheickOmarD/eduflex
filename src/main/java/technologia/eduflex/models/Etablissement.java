@@ -21,12 +21,20 @@ public class Etablissement {
 
     @OneToMany
     private List <Classe> classes;
-
     @OneToMany
     private List<Formation> formations;
-
     @Enumerated(EnumType.STRING)
     private EtablissementType etablissementType;
 
+    public Object getAddress() {
+        return null;
+    }
 
+    public Object getDescription() {
+        return null;
+    }
+
+    public boolean isPresent() {
+        return false;
+    }
 }

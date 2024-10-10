@@ -1,5 +1,6 @@
 package technologia.eduflex.services.transaction;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import technologia.eduflex.enums.ModeTransaction;
@@ -13,10 +14,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
 
-    @Autowired
-    private TransactionRepository transactionRepository;
+    private final TransactionRepository transactionRepository;
 
     @Override
     public Transaction creerTransaction(Transaction transaction) {
@@ -48,11 +49,11 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> visualiserTransactions(Long utilisateurId) {
-        if (utilisateurId == null) {
+    public List<Transaction> visualiserTransactions(Long usersId) {
+        if (usersId == null) {
             throw new TransactionException("L'ID de l'utilisateur ne peut pas être nul.");
         }
-        return transactionRepository.findByUsersId(utilisateurId);
+        return transactionRepository.findByUsersId(usersId);
     }
 
     @Override

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @ToString
@@ -20,5 +21,9 @@ public class Formation {
     private LocalDate endAt = LocalDate.now();
 
     @OneToMany
-    private Evaluation evaluation;
+    private List <Evaluation> evaluations;
+
+    public String getDescription() {
+        return null;
+    }
 }

@@ -4,6 +4,8 @@ package technologia.eduflex.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -14,13 +16,18 @@ public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
-//    @@ManyToOne
-//    private Enseignant enseignant;
-
-    @ManyToOne
-    private Classe classe;
     @OneToMany
-    private Note note;
+    private List<Note> notes;
+
+    @ManyToMany
+    private List<Classe> classes;
+
+    public String getDescription() {
+        return null;
+    }
 }
+
+

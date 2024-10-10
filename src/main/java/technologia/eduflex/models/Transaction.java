@@ -26,9 +26,11 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private ModeTransaction mode;
 
-    private LocalDateTime paiement = LocalDateTime.now();
+    private LocalDateTime CreatedAt = LocalDateTime.now();
+    private LocalDateTime endDate = LocalDateTime.now();
     @ManyToOne
     private Users users;
+
 
 }
 
